@@ -1,13 +1,14 @@
 const express = require("express");
-const path = require("path");
 const handlebars = require("express-handlebars");
+const path = require("path");
+
 const { PORT } = require("./constants");
 const routes = require("./router");
 
 // Local variables
 const app = express();
 
-// express Config
+// Express Config
 app.use(express.static(path.resolve(__dirname, "./public")));
 app.use(express.urlencoded({ extended: false }));
 
