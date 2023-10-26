@@ -1,5 +1,5 @@
 const constants = {
-  PORT: 6066,
+  PORT: 5000,
 };
 
 module.exports = constants

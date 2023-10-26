@@ -1,18 +1,23 @@
 const express = require("express");
-const handlebarsConfig = require("./config/handlebarsConfig");
-const expressConfig = require("./config/expressConfig");
+const path = require("path");
+const handlebars = require("express-handlebars");
 const { PORT } = require("./constants");
-const routers = require("./router");
+const routes = require("./router");
 
 // Local variables
 const app = express();
 
-// Config
-handlebarsConfig(app);
-expressConfig(app);
+// express Config
+app.use(express.static(path.resolve(__dirname, "./public")));
+app.use(express.urlencoded({ extended: false }));
+
+// handlebars config
+app.engine("hbs", handlebars.engine({ extname: "hbs" }));
+app.set("view engine", "hbs");
+app.set("views", "src/views");
 
 // Routing
-app.use(routers);
+app.use(routes);
 
 // Listener
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}!`));
