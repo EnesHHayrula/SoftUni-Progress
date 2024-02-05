@@ -1,0 +1,20 @@
+{{#if users}}
+  {{#each users}}
+    {{>user}}
+  {{/each}}
+{{else}}
+  <p>There are no users!</p>
+{{/if}}
+
+<form method="post">
+  <label for="Name">Name:</label>
+  <br />
+  <input type="text" id="name" name="name" />
+  <br />
+  <label for="age">Age:</label>
+  <br />
+  <input type="text" id="age" name="age" />
+  <br />
+  <br />
+  <input type="submit" value="Create User" />
+</form>
